@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "arc sandbox",
+    "deploy": "arc deploy --production"
+  },
+  "dependencies": {
+    "@architect/functions": "^8.0.4",
+    "discord-interactions": "^3.4.0"
+  },
+  "devDependencies": {
+    "@architect/architect": "^11.0.5"
+  }
+}
