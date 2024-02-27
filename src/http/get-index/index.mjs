@@ -1,6 +1,14 @@
+import process from 'node:process'
 import arc from '@architect/functions'
 
+const { APPLICATION_ID } = process.env
+
 export const handler = arc.http(async function() {
+  if (!APPLICATION_ID) return {
+    statusCode: 500,
+    text: 'missing APPLICATION_ID',
+  }
+
   return {
     html: /*html*/`
 <!DOCTYPE html>
@@ -30,7 +38,7 @@ export const handler = arc.http(async function() {
 </head>
 <body>
   <img src="/_static/canary-cowboy.png" width="350px">
-  <a href="https://discord.com/api/oauth2/authorize?client_id=1210656364318167041&permissions=51264&scope=bot">install</a>
+  <a href="https://discord.com/api/oauth2/authorize?client_id=${APPLICATION_ID}&permissions=51264&scope=bot">install</a>
 </body>
 </html>
 `
